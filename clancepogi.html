@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    <style>
+        body {
+            font-family: Harrington, sans-serif;
+            padding: 30px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: hwb(128 72% 0%);
+        }
+        .container {
+            background: rgb(25, 176, 5);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 255, 68, 0.993);
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #0f8f03;
+            width: 100%;
+        }
+
+        input::placeholder {
+            color:#3f5c48
+        }
+
+        button { 
+            cursor: pointer;
+            background-color: #03430e;
+            color: rgb(110, 255, 142);
+            border: 1px;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background-color: #3a9055;
+            transform: scale(0.95);
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>PALINDROME CHECKER</h1>
+        <input id="textInput" type="text" placeholder="Type a Word to verify">
+        <button onclick="checkPalindrome()">Check</button>
+        <button onclick="redirect()">Go Back</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function checkPalindrome() {
+            var text = document.getElementById("textInput").value;
+            var cleanedText = text.toLowerCase().replace(/[\W_]/g, ''); 
+            var reversedText = cleanedText.split('').reverse().join('');
+
+            if (cleanedText === reversedText && cleanedText.length > 0) {
+                document.getElementById("result").innerHTML = "Yes, it's a palindrome!";
+            } else {
+                document.getElementById("result").innerHTML = "No, it's not a palindrome.Try Again";
+            }
+        }
+        function redirect() {
+           
+           document.body.style.opacity = '0';
+           
+           setTimeout(function() {
+               window.location.href = 'index.html';
+           }, 500); 
+       }
+
+        
+    </script>
+</body>
+</html>
